@@ -1,0 +1,22 @@
+[
+  {
+    "username": 123,
+    "tg": "@test1",
+    "code": "test"
+  },
+  {
+    "username": 1234,
+    "tg": "@test2",
+    "code": "test"
+  },
+  {
+    "username": 12345,
+    "tg": "@test3",
+    "code": "test"
+  },
+  {
+    "username": 123456,
+    "tg": "@test4",
+    "code": "test"
+  }
+]

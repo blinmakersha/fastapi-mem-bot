@@ -1,0 +1,47 @@
+[
+    {
+        "user_id": 1,
+        "mem_id": 1,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 2,
+        "mem_id": 1,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 3,
+        "mem_id": 1,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 1,
+        "mem_id": 2,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 2,
+        "mem_id": 2,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 3,
+        "mem_id": 2,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 1,
+        "mem_id": 3,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 2,
+        "mem_id": 4,
+        "cart_type":  "general"
+    },
+    {
+        "user_id": 3,
+        "mem_id": 5,
+        "cart_type":  "general"
+    }
+]

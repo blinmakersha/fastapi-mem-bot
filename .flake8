@@ -1,0 +1,20 @@
+[flake8]
+max-line-length = 120
+no-accept-encodings = True
+inline-quotes = '
+docstring-quotes = '
+multiline-quotes = '
+exclude =
+    .git,
+    .venv,
+    .mypy_cache,
+    .pytest_cache,
+    __pycache__,
+    venv,
+    alembic,
+    backend_utils,
+ignore = E203,E501,W503,W505,B008,G200,PIE781,Q002,EXE002,F401
+select = C,E,F,G,I,P,S,W,Q,T,B,B950
+per-file-ignores = __init__.py:F401,F403
+
+[isort]

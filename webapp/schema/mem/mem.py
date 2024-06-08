@@ -1,9 +1,9 @@
 from pydantic import BaseModel, ConfigDict
 
-from webapp.schema.enums import BasketEnum, LikeDislikeEnum
+from webapp.schema.enums import CartEnum, LikeDislikeEnum
 
 
-class MemeRead(BaseModel):
+class MemRead(BaseModel):
     id: int
     text: str
     likes: int
@@ -12,17 +12,17 @@ class MemeRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-class MemeCreate(BaseModel):
+class MemCreate(BaseModel):
     text: str
 
 
-class MemeAfterCreate(BaseModel):
+class MemAfterCreate(BaseModel):
     id: int
 
     model_config = ConfigDict(from_attributes=True)
 
 
-class MemeDownload(BaseModel):
+class MemDownload(BaseModel):
     photo_url: str
 
     model_config = ConfigDict(from_attributes=True)

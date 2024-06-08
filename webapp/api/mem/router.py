@@ -1,3 +1,3 @@
 from fastapi import APIRouter
 
-meme_router = APIRouter(prefix='/mem')
+mem_router = APIRouter(prefix='/mem')

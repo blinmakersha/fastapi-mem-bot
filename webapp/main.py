@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from webapp.api.login.router import auth_router
+from webapp.api.auth.router import auth_router
 from webapp.api.mem.router import mem_router
 from webapp.metrics import metrics
 from webapp.middleware.logger import LogServerMiddleware

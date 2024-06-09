@@ -18,21 +18,21 @@ from webapp.crud.mem import (
     personal_cart,
     random_mem,
     rating_mem,
-    trend_mem,
+    trendy_mem,
 )
 from webapp.db.minio import minio_client
 from webapp.db.postgres import get_session
 from webapp.models.sirius.mem_rating import LikeDislikeEnum
-from webapp.schema.enums import cartEnum
-from webapp.schema.mem.mem import memAfterCreate, memCreate, memRead
+from webapp.schema.enums import CartEnum
+from webapp.schema.mem.mem import MemAfterCreate, MemCreate, MemRead
 from webapp.utils.auth.jwt import JwtTokenT, jwt_auth
 
 
 @mem_router.get(
-    '/', response_model=List[memRead], response_class=ORJSONResponse, tags=['mem'], status_code=status.HTTP_200_OK
+    '/', response_model=List[MemRead], response_class=ORJSONResponse, tags=['mem'], status_code=status.HTTP_200_OK
 )
 async def get_memes(
-    cart_type: cartEnum,
+    cart_type: CartEnum,
     session: AsyncSession = Depends(get_session),
     current_user: JwtTokenT = Depends(jwt_auth.get_current_user),
 ):
@@ -43,7 +43,7 @@ async def get_memes(
 
 
 @mem_router.get(
-    '/random', response_model=memRead, response_class=ORJSONResponse, tags=['mem'], status_code=status.HTTP_200_OK
+    '/random', response_model=MemRead, response_class=ORJSONResponse, tags=['mem'], status_code=status.HTTP_200_OK
 )
 async def get_random_mem(
     session: AsyncSession = Depends(get_session), current_user: JwtTokenT = Depends(jwt_auth.get_current_user)
@@ -55,13 +55,13 @@ async def get_random_mem(
 
 @mem_router.post(
     '/upload',
-    response_model=memAfterCreate,
+    response_model=MemAfterCreate,
     status_code=status.HTTP_201_CREATED,
     response_class=ORJSONResponse,
     tags=['mem'],
 )
 async def upload_file(
-    body: memCreate = Depends(),
+    body: MemCreate = Depends(),
     file: UploadFile = File(...),
     session: AsyncSession = Depends(get_session),
     current_user: JwtTokenT = Depends(jwt_auth.get_current_user),
@@ -73,22 +73,22 @@ async def upload_file(
 
 
 @mem_router.get(
-    '/trend-mem',
-    response_model=memRead,
+    '/trendy-mem',
+    response_model=MemRead,
     response_class=ORJSONResponse,
     tags=['mem'],
     status_code=status.HTTP_200_OK,
 )
-async def get_trend_mem(
+async def get_trendy_mem(
     session: AsyncSession = Depends(get_session), current_user: JwtTokenT = Depends(jwt_auth.get_current_user)
 ):
-    return await trend_mem(session=session) or ORJSONResponse(
+    return await trendy_mem(session=session) or ORJSONResponse(
         {'message': 'Доступных мемов нет'}, status_code=status.HTTP_200_OK
     )
 
 
 @mem_router.get(
-    '/{mem_id}', response_model=memRead, response_class=ORJSONResponse, tags=['mem'], status_code=status.HTTP_200_OK
+    '/{mem_id}', response_model=MemRead, response_class=ORJSONResponse, tags=['mem'], status_code=status.HTTP_200_OK
 )
 async def get_mem(
     mem_id: int,
@@ -134,7 +134,7 @@ async def add_to_cart(
 
 @mem_router.get(
     '/mark/{mem_id}',
-    response_model=memRead,
+    response_model=MemRead,
     response_class=ORJSONResponse,
     tags=['mem'],
     status_code=status.HTTP_200_OK,
